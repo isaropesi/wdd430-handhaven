@@ -1,4 +1,6 @@
 import "./globals.css";
+import Providers from "./providers";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "Handcrafted Haven | Artisanal Marketplace",
@@ -9,24 +11,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header className="main-header">
-          <div className="container header-content">
-            <div className="logo-text">Handcrafted Haven</div>
-            <nav className="header-nav">
-              <a href="/">Home</a>
-              <a href="/shop">Shop</a>
-              <a href="/artisans">Artisans</a>
-              <a href="/about">About</a>
-              <button className="btn btn-sm">Sign In</button>
-            </nav>
+        <Providers>
+          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <Header />
+          <div id="main-content">
+            {children}
           </div>
-        </header>
-        {children}
-        <footer className="main-footer">
-          <div className="container">
-            <p>&copy; {new Date().getFullYear()} Handcrafted Haven. All rights reserved.</p>
-          </div>
-        </footer>
+          <footer className="main-footer">
+            <div className="container">
+              <p>&copy; {new Date().getFullYear()} Handcrafted Haven. All rights reserved.</p>
+            </div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );

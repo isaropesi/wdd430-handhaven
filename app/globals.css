@@ -214,3 +214,61 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+  .hero-image {
+    height: 280px;
+    width: 100%;
+  }
+  .header-nav {
+    gap: 16px;
+  }
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .header-nav a:not(:last-child) {
+    display: none;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility: focus styles */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Skip to content link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 9999;
+  border-radius: 0 0 var(--radius-sm) 0;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
