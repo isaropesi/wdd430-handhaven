@@ -97,11 +97,31 @@ export default function ProductPage({ params }) {
             {error && <p style={{ color: '#c0392b', marginBottom: '12px' }}>{error}</p>}
             <div style={{ marginBottom: '16px' }}>
               <label style={{ display: 'block', marginBottom: '8px', fontWeight: 600 }}>Rating</label>
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ display: 'flex', gap: '4px' }}>
                 {[1,2,3,4,5].map((n) => (
                   <button key={n} type="button"
                     onClick={() => setReview({ ...review, rating: n })}
-                    style={{ fontSize: '1.5rem', background: 'none', border: 'none', cursor: 'pointer', opacity: n <= review.rating ? 1 : 0.3 }}>★</button>
+                    style={{
+                      fontSize: '1.8rem',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      color: n <= review.rating ? '#f5a623' : 'var(--foreground)',
+                      transition: 'color 0.15s ease',
+                      lineHeight: 1,
+                      padding: '2px',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.parentElement.querySelectorAll('button').forEach((btn, i) => {
+                        btn.style.color = i < n ? '#f5a623' : 'var(--foreground)';
+                      });
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.parentElement.querySelectorAll('button').forEach((btn, i) => {
+                        btn.style.color = i < review.rating ? '#f5a623' : 'var(--foreground)';
+                      });
+                    }}
+                  >★</button>
                 ))}
               </div>
             </div>
