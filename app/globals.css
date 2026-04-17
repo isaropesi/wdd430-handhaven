@@ -45,6 +45,14 @@
   margin: 0;
 }
 
+input,
+select,
+textarea {
+  color: var(--foreground);
+  background-color: var(--background);
+  caret-color: var(--foreground);
+}
+
 html,
 body {
   max-width: 100vw;
